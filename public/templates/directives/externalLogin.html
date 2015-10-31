@@ -1,0 +1,51 @@
+<div>
+    <h3>External login</h3>
+    <hr/>
+    <div ng-if="logins.toRemove">
+        <table class="table table-bordered table-hover ">
+            <thead>
+            <tr class="info">
+                <th>Provider</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-if="logins.toRemove.google">
+                <td>Google</td>
+                <td class="text-center">
+                    <a ng-click="removeLogin(logins.toRemove.google)" class="btn btn-xs btn-danger"
+                       title="Remove your Google login">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+            <tr ng-if="logins.toRemove.facebook">
+                <td>Facebook</td>
+                <td class="text-center">
+                    <a ng-click="removeLogin(logins.toRemove.facebook)" class="btn btn-xs btn-danger"
+                       title="Remove your Facebook login">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-if="logins.toAdd">
+        <a ng-if="logins.toAdd.google" ng-click="addLogin('google')" class="login-btn google-btn"
+           title="Log in using your Google account">
+            <span class="fa fa-google-plus"></span>
+            <span>Add Google login</span>
+        </a>
+        <a ng-if="logins.toAdd.facebook" ng-click="addLogin('facebook')"
+           class="login-btn facebook-btn" title="Log in using your Facebook account">
+            <span class="fa fa-facebook"></span>
+            <span>Add Facebook login</span>
+        </a>
+    </div>
+
+    <div ng-if="!logins">
+        <h3 class="text-danger">External login providers do not exists!</h3>
+    </div>
+</div>

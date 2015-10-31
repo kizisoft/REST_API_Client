@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="MainCtrl">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../public/stylesheets/notifier.css"/>
+    <link rel="stylesheet" href="../public/stylesheets/style.css"/>
+    <title></title>
+</head>
+
+<body>
+<div class="root">
+    <div class="wrapper">
+        <header class="text-center">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#/">REST API Client</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/">Home</a></li>
+                            <li><a href="#test">Test</a></li>
+                        </ul>
+                        <login></login>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div messages-panel></div>
+            <div ng-view></div>
+        </div>
+
+        <div class="footer-push"></div>
+    </div>
+
+    <footer class="footer" ng-controller="FooterCtrl">
+        <p>&copy; {{copyRightDate}} - KiziSoft</p>
+    </footer>
+</div>
+
+<!-- Main -->
+<script src="../libs/angular/angular.js"></script>
+<script src="../libs/angular-route/angular-route.js"></script>
+<script src="../libs/angular-resource/angular-resource.js"></script>
+<script src="../libs/jquery/dist/jquery.js"></script>
+<script src="../libs/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../libs/cryptojslib/rollups/aes.js"></script>
+<script src="app/app.js"></script>
+
+<!-- Controllers -->
+<script src="app/controllers/MainCtrl.js"></script>
+<script src="app/controllers/HomeCtrl.js"></script>
+<script src="app/controllers/FooterCtrl.js"></script>
+<script src="app/controllers/account/RedirectCtrl.js"></script>
+<script src="app/controllers/account/LoginCtrl.js"></script>
+<script src="app/controllers/account/RegisterCtrl.js"></script>
+<script src="app/controllers/account/RegisterSocialCtrl.js"></script>
+<script src="app/controllers/administration/AdministrationCtrl.js"></script>
+<script src="app/controllers/profile/ProfileHomeCtrl.js"></script>
+<script src="app/controllers/profile/ManageLoginsCtrl.js"></script>
+<script src="app/controllers/test/TestCtrl.js"></script>
+
+<!-- Directives -->
+<script src="app/directives/messagesPanel.js"></script>
+<script src="app/directives/login.js"></script>
+<script src="app/directives/localLogin.js"></script>
+<script src="app/directives/externalLogin.js"></script>
+
+<!-- Services -->
+<script src="app/services/data/auth.js"></script>
+<script src="app/services/data/test.js"></script>
+<script src="app/services/data/profile.js"></script>
+<script src="app/services/notifier.js"></script>
+<script src="app/services/redirect.js"></script>
+<script src="app/services/encryption.js"></script>
+<script src="app/services/authorize.js"></script>
+<script src="app/services/middlewares.js"></script>
+
+</body>
+</html>

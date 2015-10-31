@@ -1,0 +1,58 @@
+<div>
+    <h2>Log in</h2>
+
+    <div class="row">
+        <div class="col-md-7">
+            <h4>Use a local account to log in</h4>
+            <hr>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="username" class="col-md-3 control-label">Username</label>
+
+                    <div class="col-md-9">
+                        <div class="input-group"><span class="input-group-addon"><span class="fa fa-user fa-fw"></span></span>
+                            <input id="username" type="text" name="username" placeholder="Username"
+                                   ng-model="credentials.username" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-md-3 control-label">Password</label>
+
+                    <div class="col-md-9">
+                        <div class="input-group"><span class="input-group-addon"><span
+                                class="fa fa-key fa-fw"></span></span>
+                            <input id="password" type="password" name="password" placeholder="Password"
+                                   ng-model="credentials.password" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <a href="#/register" class="btn btn-default pull-left">Register as a new user</a>
+                        <button ng-click="login(credentials)" class="btn btn-success pull-right">Log in
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-5">
+            <h4>Use another service to log in</h4>
+            <hr>
+            <div>
+                <a ng-click="loginSocial('google')" class="login-btn google-btn"
+                   title="Log in using your Google account">
+                    <span class="fa fa-google-plus"></span>
+                    <span>Log in with Google</span>
+                </a>
+                <a ng-click="loginSocial('facebook')" class="login-btn facebook-btn"
+                   title="Log in using your Facebook account">
+                    <span class="fa fa-facebook"></span>
+                    <span>Log in with Facebook</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

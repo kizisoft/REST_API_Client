@@ -1,0 +1,167 @@
+html, body, .root {
+    height: 100%;
+}
+
+body {
+    color: #666;
+}
+
+ul, li {
+    list-style: none;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -150px;
+}
+
+.footer-push, .footer {
+    height: 150px;
+}
+
+.footer {
+    padding: 20px;
+    text-align: center;
+    color: #b0b0b0;
+    background-color: #222;
+}
+
+.login-btn,
+.login-btn span:first-of-type::before {
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.login-btn {
+    margin-bottom: 15px;
+    display: block;
+    height: 35px;
+    width: 100%;
+    opacity: 0.9;
+    color: #ddd;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .login-btn {
+        min-width: 190px;
+        width: 51%;
+    }
+}
+
+.login-btn span {
+    vertical-align: text-bottom;
+}
+
+.login-btn span:first-of-type {
+    padding: 5px 0;
+    width: 30px;
+    float: left;
+    font-size: 1.5em;
+}
+
+.login-btn span:last-of-type {
+    vertical-align: -5px;
+}
+
+.login-btn:hover {
+    opacity: 1;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-btn:hover span:first-of-type {
+    opacity: 1;
+    color: #fff;
+}
+
+.login-btn:hover span:first-of-type::before {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.google-btn {
+    background-color: #DD4B39;
+    border: 1px solid #a23427;
+}
+
+.google-btn span:first-of-type {
+    border-right: 1px solid #BE3F2B;
+}
+
+.facebook-btn {
+    background-color: #3b5998;
+    border: 1px solid #2a4275;
+}
+
+.facebook-btn span:first-of-type {
+    padding-right: 6px;
+    border-right: 1px solid #304a81;
+}
+
+.plate {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #777;
+    border-right: 1px solid #777;
+    box-shadow: 3px 3px 5px 0 rgba(90, 90, 90, 0.75);
+}
+
+.page {
+    margin: 15px 0;
+    padding: 4% 5%;
+}
+
+.big {
+    font-size: 1.5em;
+}
+
+.avatar-wrapper {
+    width: 130px;
+    text-align: center;
+}
+
+.avatar-wrapper, .user-pic {
+    margin-bottom: 15px;
+}
+
+.user-pic img, .user-pic span {
+    font-size: 9em;
+    height: 130px;
+}
+
+.user-details span {
+    padding-bottom: 3px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-bottom: 2px solid #5cb85c;
+}
+
+.user-details dl {
+    margin: 3px 0 20px 0;
+    border-top: 1px solid #eee;
+}
+
+.user-details dt {
+    margin: 10px 0 0 5%;
+    width: 15%;
+    display: inline-block;
+}
+
+.user-details dd {
+    width: 79%;
+    display: inline-block;
+}

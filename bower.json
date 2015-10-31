@@ -1,0 +1,27 @@
+{
+  "name": "MEAN_REST_Template",
+  "version": "0.0.0",
+  "authors": [
+    "kizisoft <kizisoft@gmail.com>"
+  ],
+  "main": "app/app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "./libs"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "angular-resource": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "cryptojslib": "~3.1.2"
+  },
+  "description": "",
+  "homepage": ""
+}

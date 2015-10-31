@@ -1,0 +1,26 @@
+<div>
+    <ul ng-if="authorize.isLoggedIn()" class="nav navbar-nav navbar-right">
+        <li ng-if="authorize.isInRole('Admin')"><a href="#/administration">Administration</a></li>
+        <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                <img ng-if="authorize.getUser().image.url" ng-src="{{authorize.getUser().image.url}}"
+                     alt="Profile picture" title="Profile picture" width="25" height="25"/>
+                <span ng-if="!authorize.getUser().image.url" class="glyphicon glyphicon-user"></span>
+                {{authorize.getUser().username}}
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#/profile">Profile details</a></li>
+                <li><a href="#/profile/edit">Edit profile</a></li>
+                <li class="divider"></li>
+                <li><a href="#/profile/logins">Manage logins</a></li>
+            </ul>
+        </li>
+        <li><a ng-click="logout()">Log off</a></li>
+    </ul>
+
+    <ul ng-if="!authorize.isLoggedIn()" class="nav navbar-nav navbar-right">
+        <li><a href="#/register">Register</a></li>
+        <li><a href="#/login">Log in</a></li>
+    </ul>
+</div>

@@ -1,0 +1,7 @@
+<div>
+    <h2 ng-if="authorize.isLoggedIn()">Welcome Home {{authorize.getUser().firstName}}
+        {{authorize.getUser().lastName}}!!!</h2>
+
+    <h2 ng-if="!authorize.isLoggedIn()">Welcome Home Anonymous!!!</h2>
+    <hr/>
+</div>

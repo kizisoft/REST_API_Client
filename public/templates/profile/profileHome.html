@@ -1,0 +1,40 @@
+<div class="user-root plate page">
+    <h2>{{user.username}}</h2>
+    <hr/>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="avatar-wrapper">
+                <div class="user-pic plate">
+                    <img ng-if="user.image.url" ng-src="{{user.image.url}}" id="user-pic"
+                         class="img-responsive"/>
+                    <span ng-if="!user.image.url" id="user-glyph" class="fa fa-user"></span>
+                </div>
+            </div>
+        </div>
+
+        <ul class="col-md-9 user-details">
+            <li>
+                <span>Public information</span>
+                <dl>
+                    <dt>First name</dt>
+                    <dd>{{user.firstName}}</dd>
+
+                    <dt>Last name</dt>
+                    <dd>{{user.lastName}}</dd>
+                </dl>
+            </li>
+
+            <li>
+                <span>Private information</span>
+                <dl>
+                    <dt>Email</dt>
+                    <dd>{{user.email}}</dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="clearfix">
+        <a ng-href="#/profile/edit/{{user.id}}" class="btn btn-success">Edit profile</a>
+    </div>
+</div>
