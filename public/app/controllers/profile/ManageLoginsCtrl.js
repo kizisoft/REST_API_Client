@@ -3,6 +3,34 @@
 app.controller('ManageLoginsCtrl', ['$scope', 'authorize', 'auth', 'profile', 'redirect', 'notifier', function ($scope, authorize, auth, profile, redirect, notifier) {
     $scope.isLocalUser = authorize.getUser().isLocalUser;
 
+    $scope.setPassword = function setPassword(credentials) {
+        if (!checkPasswords(credentials.password, credentials.confirmPassword)) {
+            return;
+        }
+        profile.setPassword({newPassword: credentials.password})
+            .then(function (user) {
+                authorize.saveUser(user);
+                redirect.reload();
+                notifier.notifySuccess('New local login created!');
+            }, function (err) {
+                $scope.error(err, 'Can not create local login: ');
+            })
+    };
+
+    $scope.changePassword = function changePassword(credentials) {
+        if (!checkPasswords(credentials.newPassword, credentials.confirmPassword)) {
+            return;
+        }
+        profile.changePassword({password: credentials.password, newPassword: credentials.newPassword})
+            .then(function (user) {
+                authorize.saveUser(user);
+                redirect.reload();
+                notifier.notifySuccess('Local password changed!');
+            }, function (err) {
+                $scope.error(err, 'Can not change local password: ');
+            })
+    };
+
     $scope.addLogin = function (provider) {
         auth.providers[provider].login({provider: provider, location: '+profile+logins'});
     };
@@ -13,7 +41,7 @@ app.controller('ManageLoginsCtrl', ['$scope', 'authorize', 'auth', 'profile', 'r
                 notifier.notifySuccess('External login deleted!');
                 redirect.reload();
             }, function (err) {
-                error(err, 'Can not delete external login: ');
+                $scope.error(err, 'Can not delete external login: ');
             });
     };
 
@@ -25,7 +53,7 @@ app.controller('ManageLoginsCtrl', ['$scope', 'authorize', 'auth', 'profile', 'r
                 notifier.notifySuccess('New ' + userLogin.provider + ' login added!');
                 redirect.reload();
             }, function (err) {
-                error(err, 'Can not add external login: ');
+                $scope.error(err, 'Can not add external login: ');
             });
     }
 
@@ -45,22 +73,31 @@ app.controller('ManageLoginsCtrl', ['$scope', 'authorize', 'auth', 'profile', 'r
                 }
             }
         }, function (err) {
-            error(err, 'Can not get external logins: ');
+            $scope.error(err, 'Can not get external logins: ');
         });
+
+    function checkPasswords(password, confirmPassword) {
+        var result = true;
+        if (!password) {
+            result = false;
+            notifier.notifyError('Password is required!');
+        }
+        if (!confirmPassword) {
+            result = false;
+            notifier.notifyError('Confirm Password is required!');
+        }
+        if (password !== confirmPassword) {
+            result = false;
+            notifier.notifyError('Password and Confirm Password do not match!');
+        }
+        return result;
+    }
 
     function getLogin(logins, provider) {
         for (var i = 0, length = logins.length; i < length; i += 1) {
             if (logins[i].provider === provider) {
                 return logins[i];
             }
-        }
-    }
-
-    function error(err, message) {
-        if (err.data) {
-            notifier.notifyError(message + err.data, {isSticky: true});
-        } else {
-            notifier.notifyError('Internet Connection Error. Server not responding! Check the internet connection and try again later.', {isSticky: true});
         }
     }
 }]);

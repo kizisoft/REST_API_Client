@@ -11,7 +11,7 @@ app.controller('RegisterSocialCtrl', ['$scope', '$location', '$routeParams', 'au
                 authorize.saveUser(user);
                 $location.path('/');
             }, function (err) {
-                notifier.notifyError(err.data, {isSticky: true});
+                $scope.error(err);
             });
     };
 }]);

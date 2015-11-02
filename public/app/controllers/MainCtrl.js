@@ -25,4 +25,16 @@ app.controller('MainCtrl', ['$scope', '$location', 'auth', 'authorize', 'notifie
             notifier.notifySuccess(params.locals.middlewares.success);
         }
     });
+
+    $scope.error = function error(err, message) {
+        message = message || '';
+        if (err.data) {
+            for (var i = 0, length = err.data.errors.length; i < length; i += 1) {
+                message += err.data.errors[i] + '<br/>';
+            }
+            notifier.notifyError(message, {isSticky: true});
+        } else {
+            notifier.notifyError('Internet Connection Error. Server not responding! Check the internet connection and try again later.', {isSticky: true});
+        }
+    }
 }]);

@@ -7,7 +7,7 @@ app.controller('LoginCtrl', ['$scope', '$location', 'auth', 'authorize', 'redire
                 authorize.saveUser(user);
                 $location.path('/');
             }, function (err) {
-                notifier.notifyError(err.data);
+                $scope.error(err);
             });
     };
 
@@ -27,15 +27,10 @@ app.controller('LoginCtrl', ['$scope', '$location', 'auth', 'authorize', 'redire
                 authorize.saveUser(user);
                 $location.path('/');
             }, function (err) {
-                if (err.data) {
-                    if (err.status === 403) {
-                        $location.path('/register/social/' + state.provider + '/' + params.access_token);
-                    } else {
-                        notifier.notifyError('Authentication Error: ' + err.data, {isSticky: true});
-                        $location.path('/login');
-                    }
+                if (err.status === 403) {
+                    $location.path('/register/social/' + state.provider + '/' + params.access_token);
                 } else {
-                    notifier.notifyError('Internet Connection Error. Server not responding! Check the internet connection and try again later.', {isSticky: true});
+                    $scope.error(err, 'Authentication Error: ');
                     $location.path('/login');
                 }
             });
