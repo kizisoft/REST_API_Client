@@ -7,7 +7,7 @@ app.controller('RegisterCtrl', ['$scope', '$location', 'auth', 'authorize', 'not
                 authorize.saveUser(user);
                 $location.path('/');
             }, function (err) {
-                notifier.notifyError(err.data, {isSticky: true});
+                $scope.error(err);
             });
     };
 }]);

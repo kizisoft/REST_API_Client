@@ -1,0 +1,69 @@
+<div>
+    <h2>{{username}}</h2>
+    <hr/>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="avatar-wrapper">
+                <div class="user-pic plate">
+                    <img ng-if="profile.image" ng-src="{{profile.image}}" id="user-pic"
+                         class="img-responsive"/>
+                    <span ng-if="!profile.image" id="user-glyph" class="fa fa-user"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <form class="form-horizontal">
+
+                <div class="form-group">
+                    <label for="firstName" class="col-md-3 control-label">First name</label>
+
+                    <div class="col-md-9">
+                        <div class="input-group"><span class="input-group-addon"><span class="fa fa-user fa-fw"></span></span>
+                            <input id="firstName" type="text" name="firstName" placeholder="First name"
+                                   ng-model="profile.firstName" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="col-md-3 control-label">Last name</label>
+
+                    <div class="col-md-9">
+                        <div class="input-group"><span class="input-group-addon"><span class="fa fa-user fa-fw"></span></span>
+                            <input id="lastName" type="text" name="lastName" placeholder="Last name"
+                                   ng-model="profile.lastName" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="col-md-3 control-label">Email</label>
+
+                    <div class="col-md-9">
+                        <div class="input-group"><span class="input-group-addon"><span class="fa fa-user fa-fw"></span></span>
+                            <input id="email" type="text" name="email" placeholder="Email"
+                                   ng-model="profile.email" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="image" class="col-md-3 control-label">Image URL</label>
+
+                    <div class="col-md-9">
+                        <div class="input-group"><span class="input-group-addon"><span class="fa fa-user fa-fw"></span></span>
+                            <input id="image" type="text" name="image" placeholder="Image URL"
+                                   ng-model="profile.image" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="clearfix">
+                <button ng-click="saveChanges(profile)" class="btn btn-success pull-right">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

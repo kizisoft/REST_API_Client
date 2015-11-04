@@ -2,12 +2,7 @@
 
 app.factory('auth', ['$location', '$resource', 'baseApiUrl', 'authorize', function ($location, $resource, baseApiUrl, authorize) {
     var resourceLogin = $resource(baseApiUrl + 'auth/login/:provider/', {provider: '@provider'}),
-        resourceRegister = $resource(baseApiUrl + 'auth/register/:provider', {provider: '@provider'}, {
-            'put': {
-                method: 'PUT',
-                headers: authorize.getHeaders()
-            }
-        }),
+        resourceRegister = $resource(baseApiUrl + 'auth/register/:provider', {provider: '@provider'}),
         providers = {
             google: {
                 name: 'Google',

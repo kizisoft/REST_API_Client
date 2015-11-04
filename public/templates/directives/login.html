@@ -10,8 +10,8 @@
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="#/profile">Profile details</a></li>
-                <li><a href="#/profile/edit">Edit profile</a></li>
+                <li><a href="#/profile/{{authorize.getUser().id}}">Profile details</a></li>
+                <li><a href="#/profile/edit/{{authorize.getUser().id}}">Edit profile</a></li>
                 <li class="divider"></li>
                 <li><a href="#/profile/logins">Manage logins</a></li>
             </ul>

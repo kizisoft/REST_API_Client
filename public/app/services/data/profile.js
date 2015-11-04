@@ -1,22 +1,6 @@
 'use strict';
 
 app.factory('profile', ['$resource', 'baseApiUrl', 'authorize', function ($resource, baseApiUrl, authorize) {
-    var resource = $resource(baseApiUrl + 'profile/logins/:provider/', {provider: '@provider'}, {
-            'save': {
-                method: 'POST',
-                headers: authorize.getHeaders()
-            }
-        }),
-        resourcePassword = $resource(baseApiUrl + 'profile/logins/', {}, {
-            'save': {
-                method: 'POST',
-                headers: authorize.getHeaders()
-            },
-            'update': {
-                method: 'PUT',
-                headers: authorize.getHeaders()
-            }
-        });
 
     function getLogins() {
         var resource = $resource(baseApiUrl + 'profile/logins?authorization_token=' + authorize.getUser().token);
@@ -24,6 +8,12 @@ app.factory('profile', ['$resource', 'baseApiUrl', 'authorize', function ($resou
     }
 
     function addLogin(provider, data) {
+        var resource = $resource(baseApiUrl + 'profile/logins/:provider/', {provider: '@provider'}, {
+            'save': {
+                method: 'POST',
+                headers: authorize.getHeaders()
+            }
+        });
         return resource.save({provider: provider}, data).$promise;
     }
 
@@ -38,11 +28,38 @@ app.factory('profile', ['$resource', 'baseApiUrl', 'authorize', function ($resou
     }
 
     function changePassword(data) {
-        return resourcePassword.update(data).$promise;
+        var resource = $resource(baseApiUrl + 'profile/logins/', {}, {
+            'update': {
+                method: 'PUT',
+                headers: authorize.getHeaders()
+            }
+        });
+        return resource.update(data).$promise;
     }
 
     function setPassword(data) {
-        return resourcePassword.save(data).$promise;
+        var resource = $resource(baseApiUrl + 'profile/logins/', {}, {
+            'save': {
+                method: 'POST',
+                headers: authorize.getHeaders()
+            }
+        });
+        return resource.save(data).$promise;
+    }
+
+    function changeProfile(id, data) {
+        var resource = $resource(baseApiUrl + 'profile/edit/:id/', {id: '@id'}, {
+            'save': {
+                method: 'POST',
+                headers: authorize.getHeaders()
+            }
+        });
+        return resource.save({id: id}, data).$promise;
+    }
+
+    function getProfile(id) {
+        var resource = $resource(baseApiUrl + 'profile/:id/?authorization_token=' + authorize.getUser().token, {id: '@id'});
+        return resource.get({id: id}).$promise;
     }
 
     return {
@@ -50,6 +67,8 @@ app.factory('profile', ['$resource', 'baseApiUrl', 'authorize', function ($resou
         addLogin: addLogin,
         deleteLogin: deleteLogin,
         changePassword: changePassword,
-        setPassword: setPassword
+        setPassword: setPassword,
+        changeProfile: changeProfile,
+        getProfile: getProfile
     };
 }]);

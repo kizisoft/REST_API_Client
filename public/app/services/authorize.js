@@ -31,6 +31,11 @@ app.factory('authorize', ['encryption', function (encryption) {
         return false;
     }
 
+    function isPrivateAuthorized(id) {
+        var userId = getUser().id || null;
+        return userId === id;
+    }
+
     function getHeaders() {
         var user = getUser();
         if (user) {
@@ -45,6 +50,7 @@ app.factory('authorize', ['encryption', function (encryption) {
         getUser: getUser,
         isLoggedIn: isLoggedIn,
         isInRole: isInRole,
+        isPrivateAuthorized: isPrivateAuthorized,
         getHeaders: getHeaders
     };
 }]);

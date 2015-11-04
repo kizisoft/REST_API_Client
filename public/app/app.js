@@ -46,14 +46,19 @@ app.config(['$routeProvider', 'middlewaresProvider', function ($routeProvider, m
             templateUrl: 'templates/test/test.html',
             controller: 'TestCtrl'
         })
-        .when('/profile', {
-            templateUrl: 'templates/profile/profileHome.html',
-            controller: 'ProfileHomeCtrl',
-            resolve: middlewaresProvider.auth.isAuthorized
+        .when('/profile/edit/:id', {
+            templateUrl: 'templates/profile/profileEdit.html',
+            controller: 'ProfileEditCtrl',
+            resolve: middlewaresProvider.auth.isPrivateAuthorized
         })
         .when('/profile/logins', {
             templateUrl: 'templates/profile/manageLogins.html',
             controller: 'ManageLoginsCtrl',
+            resolve: middlewaresProvider.auth.isAuthorized
+        })
+        .when('/profile/:id', {
+            templateUrl: 'templates/profile/profileHome.html',
+            controller: 'ProfileHomeCtrl',
             resolve: middlewaresProvider.auth.isAuthorized
         })
         .otherwise({

@@ -34,6 +34,17 @@ app.provider('middlewares', function () {
                     }
                 });
             }
+        },
+        isPrivateAuthorized: {
+            middlewares: function (authorize, $route) {
+                return new Promise(function (resolve, reject) {
+                    if (!authorize.isPrivateAuthorized($route.current.params.id)) {
+                        reject({error: 'Private authorized access only!'});
+                    } else {
+                        resolve({success: '!!! isPrivateAuthorized !!!'});
+                    }
+                });
+            }
         }
     };
 

@@ -12,29 +12,31 @@
             </div>
         </div>
 
-        <ul class="col-md-9 user-details">
-            <li>
-                <span>Public information</span>
-                <dl>
-                    <dt>First name</dt>
-                    <dd>{{user.firstName}}</dd>
+        <div class="col-md-9">
+            <ul class="user-details">
+                <li>
+                    <span>Public information</span>
+                    <dl>
+                        <dt>First name</dt>
+                        <dd>{{user.firstName}}</dd>
 
-                    <dt>Last name</dt>
-                    <dd>{{user.lastName}}</dd>
-                </dl>
-            </li>
+                        <dt>Last name</dt>
+                        <dd>{{user.lastName}}</dd>
+                    </dl>
+                </li>
 
-            <li>
-                <span>Private information</span>
-                <dl>
-                    <dt>Email</dt>
-                    <dd>{{user.email}}</dd>
-                </dl>
-            </li>
-        </ul>
-    </div>
+                <li ng-if="isPrivateAuthorized">
+                    <span>Private information</span>
+                    <dl>
+                        <dt>Email</dt>
+                        <dd>{{user.email}}</dd>
+                    </dl>
+                </li>
+            </ul>
 
-    <div class="clearfix">
-        <a ng-href="#/profile/edit/{{user.id}}" class="btn btn-success">Edit profile</a>
+            <div ng-if="isPrivateAuthorized" class="clearfix">
+                <a ng-href="#/profile/edit/{{user.id}}" class="btn btn-info pull-right">Edit profile</a>
+            </div>
+        </div>
     </div>
 </div>
